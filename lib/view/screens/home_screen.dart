@@ -58,6 +58,17 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async  {
+      Provider.of<MediaViewModel>(context, listen: false).fetchMediaData("Farxod");
+      // ApiResponse apiResponse =  Provider.of<MediaViewModel>(context).response;
+      // getMediaWidget(context,apiResponse);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     final _inputController = TextEditingController();
     ApiResponse apiResponse = Provider.of<MediaViewModel>(context).response;
